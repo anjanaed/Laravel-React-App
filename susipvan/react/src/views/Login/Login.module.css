@@ -1,0 +1,10 @@
+.login{
+    background-color: blue;
+    width: 75%;
+    margin: auto;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+
+}
+
