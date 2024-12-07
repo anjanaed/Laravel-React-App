@@ -34,7 +34,7 @@ const UserForm =()=>{
         if (users.id) {
           axiosClient.put(`/user/${users.id}`, users)
             .then(() => {
-              navigate('/user')
+              window.location.href = '/admin-dashboard';
             })
             .catch(err => {
               const response = err.response;
@@ -45,7 +45,7 @@ const UserForm =()=>{
         } else {
           axiosClient.post('/user', users)
             .then(() => {
-              navigate('/user')
+              window.location.href = '/admin-dashboard';
             })
             .catch(err => {
               const response = err.response;

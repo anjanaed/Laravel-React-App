@@ -20,6 +20,14 @@ const Login=()=>{
         axiosClient.post("/login",payload).then(({data})=>{
             setUser(data.user);
             setToken(data.token);
+            localStorage.setItem('ACCESS_TOKEN', data.token);
+            if (data.user.role === 'admin') {
+                // Redirect to admin dashboard
+                window.location.href = '/admin-dashboard';
+            } else {
+                // Redirect to user dashboard
+                window.location.href = '/user';
+            }
     }).catch(err => {
         const response = err.response;
         if(response && response.status === 422){

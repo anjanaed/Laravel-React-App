@@ -3,40 +3,41 @@ import axiosClient from '../../axiosClient';
 import {Link } from "react-router-dom"
 
 const User = () => {
-  const [users,setUsers]=useState([]);
-  const [loading,setLoading]=useState(false);
+  // const [users,setUsers]=useState([]);
+  // const [loading,setLoading]=useState(false);
 
-  useEffect(()=>{
-    getUsers();
-  },[])
+  // useEffect(()=>{
+  //   getUsers();
+  // },[])
 
-  const onDeleteClick=user=>{
-    if (!window.confirm("Are you sure you want to delete this user?")){
-      return
-    }
-    axiosClient.delete(`/user/${user.id}`)
-    .then (()=>{
-      getUsers()
-    })
-  }
+  // const onDeleteClick=user=>{
+  //   if (!window.confirm("Are you sure you want to delete this user?")){
+  //     return
+  //   }
+  //   axiosClient.delete(`/user/${user.id}`)
+  //   .then (()=>{
+  //     getUsers()
+  //   })
+  // }
 
-  const getUsers=()=>{
-    setLoading(true)
-    axiosClient.get('/user')
-    .then(({data})=>{
-      setLoading(false)
-      setUsers(data.data)
-    })
-    .catch(()=>{
-      setLoading(false)
-    })
-  }
+  // const getUsers=()=>{
+  //   setLoading(true)
+  //   axiosClient.get('/user')
+  //   .then(({data})=>{
+  //     setLoading(false)
+  //     setUsers(data.data)
+  //   })
+  //   .catch(()=>{
+  //     setLoading(false)
+  //   })
+  // }
 
 
   return (
     <div>
-    <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
-      <h1>Users</h1>
+      User Dashboard
+    {/* <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}> */}
+      {/* <h1>Users</h1>
       <Link className="btn-add" to="/user/new">Add new</Link>
     </div>
     <div className="card animated fadeInDown">
@@ -75,7 +76,7 @@ const User = () => {
           </tbody>
         }
       </table>
-    </div>
+    </div> */}
   </div>
   )
 }

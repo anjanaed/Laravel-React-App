@@ -5,7 +5,8 @@ import Users from './views/User/User.jsx'
 import DefaultLayout from './components/DefaultLayout.jsx';
 import GuestLayout from './components/GuestLayout.jsx';
 import UserForm from './views/UserForm/UserForm.jsx'
-
+import AdminDashboard from './views/Admin/AdminDashboard.jsx';
+import AdminRoute from './views/Admin/AdminRoute.jsx';
 
 const router= createBrowserRouter([
 
@@ -24,6 +25,13 @@ const router= createBrowserRouter([
             {
                 path: '/user/:id',
                 element:<UserForm key="UserUpdate"/>
+            },
+            {
+                path: '/admin-dashboard',
+                element: 
+                (<AdminRoute>
+                    <AdminDashboard />
+                </AdminRoute>)
             },
         ]
     },
