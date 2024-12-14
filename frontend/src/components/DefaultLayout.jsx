@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, Navigate } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useStateContext } from "../contexts/contextprovider";
 import { FourSquare } from "react-loading-indicators";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const notifySuc = (message) => {
-  toast.success(message, {
-    position: "bottom-right",
-    autoClose: 2500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-};
+
 
 export default function DefaultLayout() {
   const { user, token, setUser, setToken } = useStateContext();
   const [loading, setLoading] = useState(true);
+  const navigate=useNavigate();
+
+  const notifySuc = (message) => {
+    toast.success(message, {
+      position: "bottom-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   useEffect(() => {
     if (!token) {
@@ -81,7 +84,7 @@ export default function DefaultLayout() {
       <div className="content">
         <header>
           <div>
-            <span className="s-logo">S</span>
+            <span className="s-logo" onClick={()=>navigate('/')}>S</span>
           </div>
           <div>
             {user ? user.name : "Loading..."}

@@ -1,11 +1,11 @@
 import React from 'react'
-import Login from './views/Login/Login';
+import HomePage from './views/Homepage/HomePage';
 
 const App =()=>{
 
   return (
     <div>
-      <ToastContainer/>
+      <HomePage/>
  
 
     </div>

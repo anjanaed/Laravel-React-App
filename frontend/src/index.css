@@ -323,3 +323,102 @@ table > tbody > tr > td {
 .s-logo:hover{
     transform: scale(1.5);
 }
+/* CSS File: App.css */
+
+/* Reset and Global Styles */
+
+  
+  .HomePage {
+    text-align: center;
+  }
+  
+ 
+  .header {
+    background: linear-gradient(to right, #FF2929, #9694FF);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .nav-button {
+    background: rgb(234, 234, 234);
+    color: black;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.5s;
+  }
+  
+  .nav-button:hover {
+    transform: scale(1.1);
+    background: rgb(46, 46, 106);
+    color: white;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    height: 70vh;
+    background: #ce2626;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 48px;
+  }
+  
+  .hero-section p {
+    font-size: 20px;
+    max-width: 800px;
+  }
+  
+  /* Info Section */
+  .info-section {
+    background: #9694FF;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .info-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .info-card {
+    background: white;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer */
+  .footer {
+    background: #FF2929;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  

@@ -7,8 +7,13 @@ import GuestLayout from './components/GuestLayout.jsx';
 import UserForm from './views/UserForm/UserForm.jsx'
 import AdminDashboard from './views/Admin/AdminDashboard.jsx';
 import AdminRoute from './views/Admin/AdminRoute.jsx';
+import HomePage from './views/Homepage/HomePage.jsx';
 
 const router= createBrowserRouter([
+    {
+        path: '/',
+        element: <HomePage />
+    },
 
     {
         path:'/',
@@ -48,7 +53,8 @@ const router= createBrowserRouter([
                 element: <Register/>
             },
         ]
-    }
+    },
+
 ]);
 
 export default router;
