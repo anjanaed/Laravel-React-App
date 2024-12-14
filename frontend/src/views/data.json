@@ -1,0 +1,38 @@
+[
+    {
+        "subject": "Combine Mathematics",
+        "teacher": "Mr. Ruwan Darshana",
+        "fee":"Rs.2500",
+        "DAT":"Saturday 4.00pm"
+    },
+    {
+        "subject": "Physics",
+        "teacher": "Mr. Nilantha Jayasuriya",
+        "fee":"Rs.3000",
+        "DAT":"Sunday 4.00pm"
+    },
+    {
+        "subject": "Chemistry",
+        "teacher": "Mr. Charitha D",
+        "fee":"Rs.1000",
+        "DAT":"Thursday 4.00pm"
+    },
+    {
+        "subject": "Biology",
+        "teacher": "Mr. Upul ",
+        "fee":"Rs.1000",
+        "DAT":"Monday 4.00pm"
+    },
+    {
+        "subject": "ICT",
+        "teacher": "Mr. Dhanjaya",
+        "fee":"Rs.1000",
+        "DAT":"Tuesday 4.00pm"
+    },
+    {
+        "subject": "Physics",
+        "teacher": "Mr. Anurada P",
+        "fee":"Rs.1000",
+        "DAT":"Friday 9.00pm"
+    }
+]

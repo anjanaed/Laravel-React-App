@@ -2,8 +2,21 @@ import {useRef,useState} from 'react'
 import {Link} from 'react-router-dom'
 import { useStateContext } from '../../contexts/contextprovider';
 import axiosClient from '../../axiosClient';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register=()=>{
+
+    const notifyErr=(message)=>{toast.error(message, {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });};
 
 
     const nameRef=useRef();
@@ -22,10 +35,17 @@ const Register=()=>{
         axiosClient.post("/register",payload).then(({data})=>{
             setUser(data.user);
             setToken(data.token);
+            window.location.href = '/user';
     }).catch(err => {
         const response = err.response;
         if(response && response.status === 422){
-            console.log(response.data.errors);
+            const errors = response.data.errors;
+            for (const key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    notifyErr(errors[key][0]);
+                }
+            }
+
         }
     });
 }
@@ -33,6 +53,7 @@ const Register=()=>{
 
     return(
         <div className='login-signup-form animated fadeinDown'>
+            <ToastContainer/>
         <div className='form'>
             <h1 className='title'>
                 Create A New Account

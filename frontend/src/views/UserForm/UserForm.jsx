@@ -1,6 +1,10 @@
 import axiosClient from "../../axiosClient";
 import {useState,useEffect} from "react";
 import {useNavigate,useParams} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 const UserForm =()=>{
@@ -12,6 +16,31 @@ const UserForm =()=>{
         email:'',
         password:''
     });
+
+    const notifySuc = (message) => {toast.success(message, {
+      position: "bottom-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });};
+    
+    const notifyErr=(message)=>{toast.error(message, {
+      position: "bottom-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    
+      });
+    
+    }
 
     const[loading,setLoading]=useState(false);
     const[errors,setErrors]=useState(null);
@@ -32,25 +61,42 @@ const UserForm =()=>{
     const onSubmit = ev => {
         ev.preventDefault()
         if (users.id) {
+
           axiosClient.put(`/user/${users.id}`, users)
-            .then(() => {
-              window.location.href = '/admin-dashboard';
+          .then(() => {
+              notifySuc("User updated successfully!");
+              setTimeout(() => {
+                  navigate('/admin-dashboard');
+              }, 2000);
             })
             .catch(err => {
               const response = err.response;
               if (response && response.status === 422) {
-                setErrors(response.data.errors)
+                const errors = response.data.errors;
+                for (const key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                        notifyErr(errors[key][0]);
+                    }
+                }
               }
             })
         } else {
           axiosClient.post('/user', users)
             .then(() => {
-              window.location.href = '/admin-dashboard';
+              notifySuc("User Created successfully!");
+              setTimeout(() => {
+                  navigate('/admin-dashboard');
+              }, 2000);
             })
             .catch(err => {
               const response = err.response;
               if (response && response.status === 422) {
-                setErrors(response.data.errors)
+                const errors = response.data.errors;
+                for (const key in errors) {
+                    if (errors.hasOwnProperty(key)) {
+                        notifyErr(errors[key][0]);
+                    }
+                }
               }
             })
         }
@@ -58,6 +104,7 @@ const UserForm =()=>{
 
     return( 
 <>
+<ToastContainer/>
       {users.id && <h1>Update User: {users.name}</h1>}
       {!users.id && <h1>New User</h1>}
       <div className="card animated fadeInDown">
@@ -75,7 +122,7 @@ const UserForm =()=>{
         }
         {!loading && (
           <form onSubmit={onSubmit}>
-            <input value={users.name} onChange={ev => setUsers({...users, name: ev.target.value})} placeholder="Name"/>
+            <input value={users.name} onChange={ev => setUsers({...users, name: ev.target.value})} placeholder="Nme"/>
             <input value={users.email} onChange={ev => setUsers({...users, email: ev.target.value})} placeholder="Email"/>
             <input type="password" onChange={ev => setUsers({...users, password: ev.target.value})} placeholder="Password"/>
             <button className="btn">Save</button>
