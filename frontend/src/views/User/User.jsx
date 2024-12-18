@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../axiosClient";
-import { Link } from "react-router-dom";
 import { useStateContext } from "../../contexts/contextprovider";
 import Data from "../data.json";
 import { FourSquare } from "react-loading-indicators";
@@ -21,7 +20,7 @@ const User = () => {
         console.error("Failed to fetch user:", error);
         setLoading(false);
       });
-  }, [setUser]);
+  }, []);
 
   return (
     <>
@@ -45,9 +44,9 @@ const User = () => {
           <br></br>
           <div className="s-cards">
             {Data &&
-              Data.map((sub) => {
+              Data.map((sub,i) => {
                 return (
-                  <div className="s-card">
+                  <div key={i} className="s-card">
                     <h3>{sub.subject}</h3>
                     <span>
                       Conduct by <b>{sub.teacher}</b> <br />
