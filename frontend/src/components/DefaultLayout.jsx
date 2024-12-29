@@ -36,6 +36,7 @@ export default function DefaultLayout() {
       .then(({ data }) => {
         setUser(data.data);
         setLoading(false);
+        console.log("access token",token)
       })
       .catch((error) => {
         console.error("Failed to fetch user:", error);
@@ -44,7 +45,7 @@ export default function DefaultLayout() {
         localStorage.removeItem("ACCESS_TOKEN");
         setLoading(false);
       });
-  }, [token, setUser, setToken]);
+  }, []);
 
   const onLogout = (ev) => {
     ev.preventDefault();

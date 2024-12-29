@@ -81,7 +81,12 @@ const UserForm =()=>{
               }
             })
         } else {
-          axiosClient.post('/user', users)
+          const payload = {
+            name:users.name,
+            email: users.email,
+            password: users.password,
+        }
+          axiosClient.post('/register', payload)
             .then(() => {
               notifySuc("User Created successfully!");
               setTimeout(() => {
